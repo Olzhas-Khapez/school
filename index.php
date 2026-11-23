@@ -4,9 +4,18 @@ $day  = date('d');
 $mon  = $months[date('n') - 1];
 $year = date('Y');
 
+// Инициализация массива
+$leftMenu = [
+    ['link' => 'Домой',             'href' => 'index.php'],
+    ['link' => 'О нас',             'href' => 'about.php'],
+    ['link' => 'Контакты',          'href' => 'contact.php'],
+    ['link' => 'Таблица умножения', 'href' => 'table.php'],
+    ['link' => 'Калькулятор',       'href' => 'calc.php']
+];
+
 /*
  * Ағымдағы сағатты 00-ден 23-ке дейінгі
- * түрінде аламыз және бүтін санға түрлendіреміз.
+ * түрінде аламыз және бүтін санға түрлендіреміз.
  */
 $hour = (int) date('H');
 $welcome = ''; // Сәлемдесу үшін айнымалыны бастапқы мәнмен инициализациялаймыз
@@ -66,18 +75,13 @@ if ($hour >= 0 && $hour < 6) {
     <!-- Навигация -->
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
-    <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
-    </ul>
+    <?php
+    echo '<ul>';
+    foreach ($leftMenu as $item) {
+        echo "<li><a href='{$item['href']}'>{$item['link']}</a></li>";
+    }
+    echo '</ul>';
+    ?>
     <!-- Меню -->
     <!-- Навигация -->
   </div>
