@@ -10,8 +10,20 @@ $leftMenu = [
     ['link' => 'О нас',             'href' => 'about.php'],
     ['link' => 'Контакты',          'href' => 'contact.php'],
     ['link' => 'Таблица умножения', 'href' => 'table.php'],
-    ['link' => 'Калькулятор',       'href' => 'calc.php']
+    ['link' => 'Калькулятор',       'href' => 'calc.php'],
+    ['link' => 'Массивы',           'href' => 'tasks.php'],
+    ['link' => 'Функции',           'href' => 'functions.php']
 ];
+
+// Мәзірді шығаратын функция
+function drawMenu($menu, $vertical = true) {
+    echo '<ul>';
+    foreach ($menu as $item) {
+        $style = $vertical ? '' : " style='display: inline-block; margin-right: 15px;'";
+        echo "<li$style><a href='{$item['href']}'>{$item['link']}</a></li>";
+    }
+    echo '</ul>';
+}
 
 /*
  * Ағымдағы сағатты 00-ден 23-ке дейінгі
@@ -76,11 +88,8 @@ if ($hour >= 0 && $hour < 6) {
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
     <?php
-    echo '<ul>';
-    foreach ($leftMenu as $item) {
-        echo "<li><a href='{$item['href']}'>{$item['link']}</a></li>";
-    }
-    echo '</ul>';
+    drawMenu($leftMenu);            // тік мәзір (әдепкі true)
+    // drawMenu($leftMenu, false);  // көлденең мәзір үшін
     ?>
     <!-- Меню -->
     <!-- Навигация -->
